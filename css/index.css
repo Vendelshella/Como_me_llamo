@@ -6,8 +6,12 @@
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
+body{
+    background-color:rgb(80, 184, 80);
+}
+
 .drag{
-    width: 200px;
+    width: 300px;
     display: grid;
     grid-template-columns: 1fr 1fr;
     margin: auto;
@@ -18,24 +22,17 @@
     height: 50px;
     background-color: #3498db;
     color: #fff;
-    margin: 10px;
+    margin: 10px auto;
     padding: 10px;
     cursor: pointer;
 }
 
-.drop{
-    width: 400px;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    margin: auto;
-}
-
 #zonaDrop {
-    width: 200px;
-    height: 100px;
+    width: 300px;
+    height: 200px;
     background-color: #e74c3c;
     color: #fff;
-    margin: 10px;
+    margin: 10px auto;
     padding: 20px;
 }
 
@@ -43,5 +40,5 @@
     font-size: 25px;
     font-weight: 500;
     text-align: center;
-    margin: 10px;
+    margin: 30px;
 }
