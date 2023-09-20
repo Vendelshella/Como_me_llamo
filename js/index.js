@@ -2,13 +2,23 @@ $(document).ready(function () {
     var tiempoRestante = 60;
     var temporizador;
 
+    // Mostrar el texto de ayuda
+    $("#ayuda").fadeIn(1000);
+
+    // Ocultar el texto de ayuda
+    setTimeout(function () {
+        $("#ayuda").fadeOut(1000);
+    }, 3000);
+
     // Función para iniciar el temporizador
     function iniciarTemporizador() {
+        // setInterval ejecuta una función de forma reiterada, con un retardo de tiempo fijo entre cada llamada
         temporizador = setInterval(function () {
             tiempoRestante--;
             $("#temporizador").text("Tiempo: " + tiempoRestante + " segundos");
 
             if (tiempoRestante === 0) {
+                // clearInterval se utiliza para detener más ejecuciones de la función especificada en el método setInterval ()
                 clearInterval(temporizador);
                 alert("¡Tiempo agotado!");
             }
@@ -20,8 +30,8 @@ $(document).ready(function () {
 
     // Hacer que los elementos sean arrastrables
     $(".elemento").draggable({
-        revert: "invalid",
-        helper: "clone"
+        revert: "true",
+        helper: "original"
     });
 
     // Hacer que la zona de soltar acepte los elementos arrastrables
@@ -31,18 +41,22 @@ $(document).ready(function () {
             var elementoArrastrado = ui.helper.attr("id");
 
             // Comprobar si el elemento soltado es el correcto
-            if (elementoArrastrado === "elemento1" || elementoArrastrado === "elemento3") {
+            if (elementoArrastrado === "elemento2") {
                 $(this).css("background-color", "#2ecc71");
-                alert("¡Correcto!");
+                $("#resultado").text("¡Correcto!");
+                
+                // Detener el temporizador permanentemente
+                clearInterval(temporizador);
+                
+                // Detener el movimiento de las tarjetas
+                $(".elemento").draggable({
+                    revert: "true",
+                    helper: "clone"
+                });
             } else {
                 $(this).css("background-color", "#e74c3c");
-                alert("Incorrecto, intenta de nuevo.");
+                $("#resultado").text("Incorrecto, inténtalo de nuevo.");
             }
-
-            // Reiniciar el temporizador
-            clearInterval(temporizador);
-            tiempoRestante = 60;
-            iniciarTemporizador();
         }
     });
 });
