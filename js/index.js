@@ -2,13 +2,7 @@ $(document).ready(function () {
     var tiempoRestante = 60;
     var temporizador;
 
-    // Mostrar el texto de ayuda
-    $("#ayuda").fadeIn(1000);
-
-    // Ocultar el texto de ayuda
-    setTimeout(function () {
-        $("#ayuda").fadeOut(1000);
-    }, 3000);
+    $("#resultado").hide();
 
     // Función para iniciar el temporizador
     function iniciarTemporizador() {
@@ -43,8 +37,8 @@ $(document).ready(function () {
             // Comprobar si el elemento soltado es el correcto
             if (elementoArrastrado === "elemento2") {
                 $(this).css("background-color", "#2ecc71");
-                $("#resultado").text("¡Correcto!");
-                
+                $("#resultado").text("¡Correcto!").fadeIn();
+
                 // Detener el temporizador permanentemente
                 clearInterval(temporizador);
                 

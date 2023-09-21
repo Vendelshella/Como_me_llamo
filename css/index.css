@@ -24,7 +24,7 @@ body{
 .elemento {
     width: 100px;
     height: 50px;
-    background-color: #47aff5;
+    background-color: #89c0e5;
     color: #000000;
     margin: 10px auto;
     padding: 10px;
@@ -34,16 +34,11 @@ body{
 #zonaDrop {
     width: 120px;
     height: 70px;
-    background-color: hsl(219, 70%, 42%);
+    background-color: hsl(209, 62%, 55%);
     color: #fff;
     margin: 10px auto;
     padding: 20px;
-    border: 1px solid black;
-}
-
-#ayuda{
-    margin: 10px auto;
-    display: none;
+    border: 5px solid rgb(0, 65, 95);
 }
 
 #temporizador {
@@ -54,6 +49,14 @@ body{
 }
 
 #resultado{
+    position: relative;
     font-size: 20px;
     margin: 20px;
+}
+
+#boton_siguiente{
+    padding: 10px;
+    background-color: #e5c089;
+    font-size: 20px;
+    margin-top: 20px;
 }
