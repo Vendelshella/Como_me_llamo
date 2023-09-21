@@ -52,6 +52,7 @@ $(document).ready(function () {
         accept: ".elemento",
         drop: function (event, ui) {
             var elementoArrastrado = ui.helper.attr("id");
+            var elemento = $("#dibujo");
 
             // Comprobar si el elemento soltado es el correcto
             if (elementoArrastrado === "elemento2") {
@@ -66,9 +67,26 @@ $(document).ready(function () {
                     revert: "true",
                     helper: "clone"
                 });
+
+                function agitarDeArribaAbajo() {
+                    elemento.animate({
+                        top: '-=20px' // Mueve el elemento hacia arriba
+                    }, 100, 'linear').animate({
+                        top: '+=40px' // Mueve el elemento hacia abajo, más que la distancia hacia arriba
+                    }, 100, 'linear').animate({
+                        top: '-=20px' // Mueve el elemento hacia arriba para volver a su posición original
+                    }, 100, 'linear');
+                }
+    
+                // Inicia el efecto de agitación de arriba a abajo
+                agitarDeArribaAbajo();
+                agitarDeArribaAbajo();
             } else {
                 $(this).css("background-color", "#e74c3c");
                 $("#resultado").text("Incorrecto, inténtalo de nuevo.");
+                
+                // Aplica el efecto de agitación utilizando la función shake() de jQuery UI
+                elemento.effect("shake", { times: 5, distance: 10 }, 1000);
             }
         }
     });

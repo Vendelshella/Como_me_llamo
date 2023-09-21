@@ -14,6 +14,10 @@ body{
     background-color:rgb(208, 235, 161);
 }
 
+#dibujo{
+    position: relative;
+}
+
 .drag{
     width: 300px;
     display: grid;
