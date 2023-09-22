@@ -7,7 +7,7 @@
 </head>
 <body>
     <h1>Subir imagen y tarjetas</h1>
-    <form action="subir_tarjetas.php" method="post" enctype="multipart/form-data">
+    <form action="subir_tarjetas_BLOB.php" method="post" enctype="multipart/form-data">
         <table>
             <tr>
                 <td><label for="opcion_correcta">Nombre:</label></td>
