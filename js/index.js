@@ -44,7 +44,7 @@ $(document).ready(function () {
     // Hacer que los elementos sean arrastrables
     $(".elemento").draggable({
         revert: "true",
-        helper: "original"
+        helper: "original" // Arrastra el elemento original
     });
 
     // Hacer que la zona de soltar acepte los elementos arrastrables
@@ -65,7 +65,7 @@ $(document).ready(function () {
                 // Detener el movimiento de las tarjetas
                 $(".elemento").draggable({
                     revert: "true",
-                    helper: "clone"
+                    helper: "clone" //Arrastra un clon de la tarjeta
                 });
 
                 function agitarDeArribaAbajo() {
@@ -78,7 +78,7 @@ $(document).ready(function () {
                     }, 100, 'linear');
                 }
     
-                // Inicia el efecto de agitación de arriba a abajo
+                // Inicia el efecto de agitación de arriba a abajo 2 veces
                 agitarDeArribaAbajo();
                 agitarDeArribaAbajo();
             } else {
