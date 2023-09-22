@@ -21,26 +21,24 @@ $(document).ready(function () {
 
     // Iniciar el temporizador cuando se carga la página
     iniciarTemporizador();
-    /*
+    
     // Llamar al servidor para obtener la imagen
-    $.ajax({
-        url: "obtener_imagen.php", // Nombre de tu archivo PHP para obtener la imagen
-        method: "GET",
-        dataType: "json",
-        success: function (data) {
-            if (data.success) {
-                // La imagen se ha obtenido con éxito
-                $("#dibujo").attr("src", "data:image/png;base64," + data.imagen);
-            } else {
-                // Ocurrió un error al obtener la imagen
-                console.error(data.message);
+    $("#boton_siguiente").click(function() {
+        $.ajax({
+            type: "GET",
+            url: "php/mostrar_img.php", // Ruta al archivo PHP
+            dataType: "html",
+            success: function(response) {
+                // Actualizar la fuente de la imagen con la respuesta del servidor
+                $("#dibujo").attr("src", response);
+            },
+            error: function() {
+                // Manejar errores, si es necesario
+                alert("Error al cargar la imagen.");
             }
-        },
-        error: function (xhr, status, error) {
-            console.error("Error en la llamada AJAX: " + error);
-        }
+        });
     });
-    */
+    
     // Hacer que los elementos sean arrastrables
     $(".elemento").draggable({
         revert: "true",

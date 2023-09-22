@@ -9,7 +9,8 @@
 <body>
     <h1 id="titulo">¿Cómo me llamo?</h1>
     <div id="temporizador">Tiempo: 60 segundos</div>
-    <img id="dibujo" src="img/seta.png" alt="">
+    <?php include ("php/mostrar_img.php"); ?>
+    <img id="dibujo" src="<?php echo 'php/uploads/$imagen'; ?>" alt="">
     <div id="zonaDrop"></div>
     
     <div class="drag">

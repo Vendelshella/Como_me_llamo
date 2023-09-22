@@ -1,30 +1,37 @@
 <?php
+try{
+    // Conexión a la base de datos
+    $conexion = new PDO("mysql:host=localhost;dbname=como_me_llamo", "root", "");
+    $conexion->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-// Conexión a la base de datos
-$conexion = new PDO("mysql:host=localhost;dbname=como_me_llamo", "root", "");
+    // Obtener el ID de la imagen que se desea mostrar
+    //$idImagen = $_POST['id'];
+    $idImagen = 3;
 
-// Obtener el ID de la imagen que se desea mostrar
-//$idImagen = $_POST['id'];
-$idImagen = 7;
+    // Consulta SQL para obtener los datos de la imagen
+    $sql = "SELECT imagen FROM tarjetas WHERE id = :id";
+    $stmt = $conexion->prepare($sql);
+    $stmt->bindParam(':id', $idImagen, PDO::PARAM_INT);
+    $stmt->execute();
 
-// Consulta SQL para obtener los datos de la imagen
-$sql = "SELECT imagen FROM tarjetas WHERE id = :id";
-$stmt = $conexion->prepare($sql);
-$stmt->bindParam(':id', $idImagen, PDO::PARAM_INT);
-$stmt->execute();
+    // Verificar si se encontró la imagen
+    $row = $stmt->fetch(PDO::FETCH_ASSOC);
+    if ($row) {
+        $imagen = $row['imagen'];
 
-// Verificar si se encontró la imagen
-if ($stmt->rowCount() > 0) {
-    // Obtener los datos binarios de la imagen
-    $imagen = $stmt->fetch(PDO::FETCH_ASSOC)['imagen'];
-    // Mostrar la imagen
-    echo "<img src='data:image/png; base64,'" . base64_encode ($idImagen) . "'>";
-} else {
-    // Si la imagen no se encuentra en la base de datos
-    echo "Imagen no encontrada";
+        $ruta_imagen = "uploads/$imagen";
+
+        echo "<img src='$ruta_imagen' alt='Imagen'>";
+    } else {
+        // Si la imagen no se encuentra en la base de datos
+        echo "Imagen no encontrada";
+    }
+}catch (PDOException $e) {
+    echo "Error de conexión: " . $e->getMessage();
 }
+    
 
-// Cerrar la conexión
-$conexion = null;
+    // Cerrar la conexión
+    $conexion = null;
 
 ?>

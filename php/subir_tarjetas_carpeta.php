@@ -36,9 +36,11 @@ if(!is_dir($carpeta)){
         if (move_uploaded_file($imagen_tmp, $ruta_destino . $nombre_imagen) == false) {
             echo "Error en la subida de imagen";
         }
+
+        $ruta_imagen = $ruta_destino . $nombre_imagen;
         
         // Sentencia preparada sql:
-        $sql = "INSERT INTO `tarjetas`(`imagen`, `opcion1`, `opcion2`, `opcion3`, `opcion4`, `opcion_correcta`) VALUES (?, ?, ?, ?, ?, ?)";
+        $sql = "INSERT INTO `tarjetas`(`imagen`, `opcion1`, `opcion2`, `opcion3`, `opcion4`, `opcion_correcta`, `ruta_imagen`) VALUES (?, ?, ?, ?, ?, ?, ?)";
 
         try {
             $result = $conexion->prepare($sql);
@@ -49,6 +51,7 @@ if(!is_dir($carpeta)){
             $result->bindParam(4, $opcion3);
             $result->bindParam(5, $opcion4);
             $result->bindParam(6, $opcion_correcta);
+            $result->bindParam(7, $ruta_imagen);
             
             $result->execute();
 
